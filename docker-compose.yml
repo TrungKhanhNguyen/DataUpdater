@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./data:/app/data
+
+  fetcher:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["bash", "start.sh"]
+    volumes:
+      - ./data:/app/data
